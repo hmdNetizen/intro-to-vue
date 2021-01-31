@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h2 v-for="(name, index) in names" :key="name">{{ index }} {{ name }}</h2>
+    <!-- <h2 v-for="(name, index) in names" :key="name">{{ index }} {{ name }}</h2>
     <h2 v-for="fullName in fullNames" :key="fullName">
       {{ fullName.first }} {{ fullName.last }}
     </h2>
@@ -10,7 +10,18 @@
     </div>
     <h2 v-for="(value, key, index) in myInfo" :key="value">
       {{ key }} {{ index }} {{ value }}
-    </h2>
+    </h2> -->
+    <h2>{{ add(10, 15, 13) }}</h2>
+    <h2>Multiply Method: {{ multiply(7) }}</h2>
+    <h2>{{ name }}</h2>
+    <button v-on:click="changeName('Superman'), increment(1)">
+      Change Name
+    </button>
+    <h2>{{ count }}</h2>
+    <button @click="increment(1)">Increment by 1</button>
+    <button @click="decrement(1)">Decrement by 1</button>
+    <button @click="increment(5)">Increment by 5</button>
+    <button @click="decrement(5)">Decrement by 5</button>
   </div>
 </template>
 
@@ -22,6 +33,9 @@ export default {
   // },
   data() {
     return {
+      count: 0,
+      name: "Hamed",
+      baseMultiplier: 5,
       num: "hello",
       display: true,
       show: false,
@@ -41,6 +55,23 @@ export default {
         stack: "ReactJS",
       },
     };
+  },
+  methods: {
+    add(a, b, c) {
+      return a + b + c;
+    },
+    multiply(num) {
+      return this.baseMultiplier * num;
+    },
+    increment(num) {
+      return (this.count += num);
+    },
+    decrement(num) {
+      return (this.count -= num);
+    },
+    changeName(name) {
+      return (this.name = name);
+    },
   },
 };
 </script>
